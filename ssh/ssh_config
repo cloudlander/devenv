@@ -1,0 +1,11 @@
+Host XXX
+    User xxxuser
+    Hostname XXX
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/xxx.key
+
+Host *.YYY
+    ProxyCommand nc -x SOCKS_PROXY:1080 %h %p
+    User yyyuser
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/yyy.key
