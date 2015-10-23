@@ -5,8 +5,10 @@ build_tools_dir="${TOPDIR}/build_tools"
 dev_tools_dir="${TOPDIR}/dev_tools"
 [[ `grep 'noproxy' ~/.bashrc` ]] || perl -np -e "for(\$_){s|#BUILD_TOOLS#|$build_tools_dir|g;s|#DEV_TOOLS#|$dev_tools_dir|g;}" >> ~/.bashrc <<WHOLEEOF
 # User specific aliases and functions
-export JAVA_HOME=#BUILD_TOOLS#/jdk1.7.0_45
+export JAVA8_HOME=#BUILD_TOOLS#/jdk1.8.0_60
+export JAVA7_HOME=#BUILD_TOOLS#/jdk1.7.0_45
 export JAVA5_HOME=#BUILD_TOOLS#/jdk1.5.0_22
+export JAVA_HOME=\$JAVA7_HOME
 export ANT_HOME=#BUILD_TOOLS#/ant
 export MAVEN_HOME=#BUILD_TOOLS#/maven
 export SCALA_HOME=#BUILD_TOOLS#/scala
@@ -51,6 +53,14 @@ export MAVEN_OPTS=
 export ANT_OPTS=
 export GRADLE_OPTS=
 export SBT_OPTS=
+}
+function showproxy(){
+echo "http_proxy=\$http_proxy"
+echo "https_proxy=\$https_proxy"
+echo "MAVEN_OPTS=\$MAVEN_OPTS"
+echo "ANT_OPTS=\$ANT_OPTS"
+echo "GRADLE_OPTS=\$GRADLE_OPTS"
+echo "SBT_OPTS=\$SBT_OPTS"
 }
 
 RServers="node1 node2"
@@ -118,6 +128,15 @@ cp_all ~/.ssh/authorized_keys
 do_all chmod 600 ~/.ssh/authorized_keys
 }
 
+function usejdk8(){
+export JAVA_HOME=$JAVA8_HOME
+export PATH=$JAVA_HOME/bin:$PATH
+}
+function usejdk7(){
+export JAVA_HOME=$JAVA7_HOME
+export PATH=$JAVA_HOME/bin:$PATH
+}
+export EDITOR=vim
 alias wget="wget --no-check-certificate"
 WHOLEEOF
 
