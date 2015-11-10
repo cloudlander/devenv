@@ -129,12 +129,12 @@ do_all chmod 600 ~/.ssh/authorized_keys
 }
 
 function usejdk8(){
-export JAVA_HOME=$JAVA8_HOME
-export PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME=\$JAVA8_HOME
+export PATH=\$JAVA_HOME/bin:\$PATH
 }
 function usejdk7(){
-export JAVA_HOME=$JAVA7_HOME
-export PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME=\$JAVA7_HOME
+export PATH=\$JAVA_HOME/bin:\$PATH
 }
 export EDITOR=vim
 alias wget="wget --no-check-certificate"
