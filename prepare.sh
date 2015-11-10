@@ -121,7 +121,7 @@ done
 
 function nopass(){
 do_all mkdir ~/.ssh
-do_all chmod 600 ~/.ssh
+do_all chmod 700 ~/.ssh
 ssh-keygen -q -f ~/.ssh/id_dsa -t dsa -v -N ''
 cp ~/.ssh/id_dsa.pub ~/.ssh/authorized_keys
 cp_all ~/.ssh/authorized_keys
